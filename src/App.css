@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "Dovemayo_gothic";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.1/Dovemayo_gothic.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   height: 100vh;
   background: url(img/clouds-ga9bdd9a3c_1920.png);
@@ -6,6 +14,7 @@ body {
 }
 
 .container {
+  font-family: "Dovemayo_gothic";
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -14,7 +23,33 @@ body {
 }
 
 .weather-box {
-  border: 3px solid white;
-  padding: 5em 10em;
+  width: 50%;
+  padding: 1em 0;
+  border: 3px solid black;
+
   border-radius: 10px;
+  margin-bottom: 3em;
+}
+
+.button-box {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button {
+  margin: 3px;
+  padding: 0.2em;
+  background-color: #ffebad;
+  border: 1px solid #25316d;
+  border-radius: 10px;
+}
+
+.activeBtn {
+  border-radius: 10px;
+  padding: 0.2em;
+  background-color: #25316d;
+  border: 1px solid #ffebad;
+  color: white;
 }

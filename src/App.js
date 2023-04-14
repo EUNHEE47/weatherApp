@@ -12,11 +12,22 @@ import ClipLoader from "react-spinners/ClipLoader";
 // 5. 현재 위치 버튼을 누르면 다시 현재 위치 기반의 날씨가 나옴.
 // 6. 데이터를 불러오는 동안 로딩 스피너가 돈다.
 const API_KEY = `75d2dea395ad5c122548fc0614d3c261`;
-const cities = ["new york", "tokyo", "hanoi", "denpasar", "seoul", "paris"];
+const cities = [
+  "seoul",
+  "new york",
+  "tokyo",
+  "okinawa",
+  "hanoi",
+  "Ho Chi Minh City",
+  "denpasar",
+  "paris",
+  "beijing",
+  "shanghai",
+];
 
 function App() {
   const [loading, setLoading] = useState(false);
-  const [city, setCity] = useState("seoul");
+  const [city, setCity] = useState(null);
   const [weather, setWeather] = useState(null);
 
   const getWeatherByLocation = async (lat, lon) => {
