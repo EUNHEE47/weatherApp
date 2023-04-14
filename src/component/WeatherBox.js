@@ -1,14 +1,15 @@
 import React from "react";
 
-const WeatherBox = () => {
+const WeatherBox = ({ weather }) => {
+  console.log("weather?", weather);
   return (
-    <div>
-      <div>서울</div>
+    <div className="weather-box text-center">
+      <div>{weather && weather.name}</div>
       <div>
-        <h1>30도</h1>
+        <h1>{weather && weather.main.temp}</h1>
       </div>
       <div>
-        <h3>맑은하늘</h3>
+        <h3>{weather?.weather[0].description}</h3>
       </div>
     </div>
   );

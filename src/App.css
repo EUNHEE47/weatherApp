@@ -4,3 +4,17 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
 }
+
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.weather-box {
+  border: 3px solid white;
+  padding: 5em 10em;
+  border-radius: 10px;
+}

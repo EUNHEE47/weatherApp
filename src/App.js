@@ -12,6 +12,10 @@ import WeatherButton from "./component/WeatherButton";
 // 6. 데이터를 불러오는 동안 로딩 스피너가 돈다.
 function App() {
   const API_KEY = `75d2dea395ad5c122548fc0614d3c261`;
+  let [weather, setWeather] = useState(null);
+  const cities = ["new york", "tokyo", "hanoi", "denpasar", "seoul", "paris"];
+  const [city, setCity] = useState("");
+
   const getCurrentLocation = () => {
     navigator.geolocation.getCurrentPosition((position) => {
       let lat = position.coords.latitude;
@@ -21,21 +25,32 @@ function App() {
   };
 
   const getWeatherByLocation = async (lat, lon) => {
-    let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=75d2dea395ad5c122548fc0614d3c261`;
+    let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
     let response = await fetch(url);
     let data = await response.json();
-    console.log("data", data);
+    setWeather(data);
+  };
+
+  const getWeatherByCity = async () => {
+    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
+    let response = await fetch(url);
+    let data = await response.json();
+    setWeather(data);
   };
 
   useEffect(() => {
-    getCurrentLocation();
-  }, []);
+    if (city === "") {
+      getCurrentLocation();
+    } else {
+      getWeatherByCity();
+    }
+  }, [city]);
 
   return (
     <div>
-      <div>
-        <WeatherBox />
-        <WeatherButton />
+      <div className="container">
+        <WeatherBox weather={weather} />
+        <WeatherButton cities={cities} setCity={setCity} />
       </div>
     </div>
   );
